@@ -19,12 +19,12 @@ steps:
   download_videos:
     enabled: true
   fix_video_format:
-    enabled: false
+    enabled: true
   process_videos:
-    enabled: false
+    enabled: true
   download_labels:
     enabled: true
   clear_empty_labels:
     enabled: false
   upload_labels:
-    enabled: false
+    enabled: true
