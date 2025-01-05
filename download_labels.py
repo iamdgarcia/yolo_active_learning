@@ -4,18 +4,12 @@ import os
 import shutil
 
 
-def download_finished_tasks(user,password,task_name,project_id,images_dir,annotations_dir,annotations_format):
+def download_finished_tasks(user,password,annotations_format):
     with make_client(host="https://app.cvat.ai/", credentials=(user, password)) as client:
         for c in client.tasks.list():
             if c.status == "completed":
-                print(len(c.get_frames_info()))
-                total_frames = len(c.get_frames_info())
-                # c.export_dataset(format_name=annotations_format,filename="result.zip",include_images=False)
-                c.download_frames(range(total_frames),outdir="results")
-                print(c.get_annotations())
+                c.export_dataset(format_name=annotations_format,filename=f"{c.name}.zip",include_images=False)
         
-
-    
 if __name__ == "__main__":
     from dotenv import load_dotenv
     load_dotenv()

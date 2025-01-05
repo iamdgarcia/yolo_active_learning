@@ -6,11 +6,25 @@ youtube:
   queries:
     - "Resumen la liga EA"
   num_videos: 1
-  resolution: 720
+  resolution: 480
 
 video:
   framerate: 180  # 60 seconds * 3 frames
 
 cvat:
-  task_name: "Active Learning Task"
+  task_name: "auto"
   annotations_format: "YOLOv8 Detection 1.0"
+
+steps:
+  download_videos:
+    enabled: false
+  fix_video_format:
+    enabled: false
+  process_videos:
+    enabled: false
+  download_labels:
+    enabled: true
+  clear_empty_labels:
+    enabled: false
+  upload_labels:
+    enabled: false
