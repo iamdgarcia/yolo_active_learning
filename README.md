@@ -10,9 +10,11 @@ This repository contains an active learning pipeline for efficiently downloading
 3. [Setup Instructions](#setup-instructions)
 4. [Configuration](#configuration)
 5. [Execution](#execution)
-6. [Scheduling Periodic Executions](#scheduling-periodic-executions)
-7. [Folder Structure](#folder-structure)
-8. [Troubleshooting](#troubleshooting)
+6. [CVAT Integration](#cvat-integration)
+7. [Scheduling Periodic Executions](#scheduling-periodic-executions)
+8. [Dependencies](#dependencies)
+9. [Troubleshooting](#troubleshooting)
+10. [License and Contribution](#license-and-contribution)
 
 ---
 
@@ -39,6 +41,8 @@ The pipeline consists of the following steps:
 4. **Upload Labels**: Send generated data to CVAT for manual refinement and validation.
 5. **Download Labels**: Retrieve the manually labeled datasets from CVAT.
 6. **Clean Labels**: Remove frames that lack corresponding labels to maintain dataset integrity.
+
+![active learning](data/active_learning.png)
 
 ---
 
@@ -137,6 +141,40 @@ python main.py
 
 ---
 
+## **CVAT Integration**
+
+### **What is CVAT?**
+[CVAT](https://cvat.org/) (Computer Vision Annotation Tool) is an open-source web-based tool for annotating videos and images for computer vision tasks. This pipeline integrates CVAT to streamline the labeling process by automating the following:
+1. Uploading extracted frames and initial labels for refinement.
+2. Downloading the manually labeled datasets for training models.
+
+### **Using CVAT in the Pipeline**
+1. **Upload Labels**:
+   - The pipeline creates a CVAT task for the extracted frames and uploads the frames along with YOLO-generated initial labels.
+   - **Requirements**:
+     - Ensure CVAT credentials (`CVAT_USER` and `CVAT_PASSWORD`) are set in the `.env` file.
+     - Define the `CVAT_PROJECT_ID` in `.env` corresponding to the CVAT project where tasks will be created.
+
+2. **Manual Annotation**:
+   - Once frames are uploaded, log into the CVAT web interface.
+   - Navigate to the created task under the specified project.
+   - Refine the labels manually to ensure accuracy.
+
+3. **Download Labels**:
+   - After completing annotations, the pipeline downloads the labeled data in the format specified in the `annotations_format` configuration (e.g., `YOLOv8 Detection 1.0`).
+
+### **CVAT Environment Variables**
+- **`CVAT_USER`**: Your CVAT username or email.
+- **`CVAT_PASSWORD`**: Your CVAT password.
+- **`CVAT_PROJECT_ID`**: The ID of the CVAT project where tasks will be created.
+
+### **Steps in CVAT Workflow**
+1. **Upload**: The pipeline automatically uploads images and initial annotations to CVAT.
+2. **Annotate**: Use CVAT's web interface to refine labels manually.
+3. **Download**: The pipeline fetches completed labels, organizing them for further use.
+
+---
+
 ## **Scheduling Periodic Executions**
 To run the pipeline periodically, use a scheduler like **cron** or **GitHub Actions**.
 
@@ -190,6 +228,17 @@ To run the pipeline periodically, use a scheduler like **cron** or **GitHub Acti
 
 ---
 
+## **Dependencies**
+The pipeline uses the following key libraries:
+- **yt-dlp**: For downloading videos from YouTube.
+- **ffmpeg**: For video formatting and processing.
+- **ultralytics**: For YOLO inference and label generation.
+- **CVAT SDK**: For interacting with the CVAT API to upload/download annotations.
+- **dotenv**: For managing environment variables.
+- **yaml/json**: For configuration and logging.
+
+---
+
 ## **Troubleshooting**
 ### **Common Issues**
 1. **Missing Dependencies**:
@@ -201,5 +250,23 @@ To run the pipeline periodically, use a scheduler like **cron** or **GitHub Acti
 3. **Access Issues in CVAT**:
    - Check if your CVAT credentials and project ID are valid.
 
+4. **Task Not Found in CVAT**:
+   - Ensure that the project ID matches an existing CVAT project.
+
 ### **Logs**
 Refer to `pipeline.log` for detailed error messages and execution details.
+
+---
+
+## **License and Contribution**
+
+### **License**
+This project is licensed under the MIT License. See `LICENSE` for more details.
+
+### **Contributing**
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Commit your changes and push the branch.
+4. Open a pull request.
+
