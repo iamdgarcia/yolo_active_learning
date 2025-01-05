@@ -1,0 +1,16 @@
+paths:
+  downloads: "downloads"
+  output: "assets/frames/"
+
+youtube:
+  queries:
+    - "Resumen la liga EA"
+  num_videos: 1
+  resolution: 720
+
+video:
+  framerate: 180  # 60 seconds * 3 frames
+
+cvat:
+  task_name: "Active Learning Task"
+  annotations_format: "YOLOv8 Detection 1.0"
