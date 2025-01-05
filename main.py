@@ -95,7 +95,7 @@ def main():
                 task_name=task_name,
                 project_id=int(os.environ["CVAT_PROJECT_ID"]),
                 images_dir=f"{output_path}/images/train",
-                annotations_dir=f"{output_path}/labels.zip",
+                annotations_path=f"{output_path}/labels.zip",
                 annotations_format=config["cvat"]["annotations_format"],
             )
             save_last_execution("upload_labels", "success")
