@@ -1,0 +1,30 @@
+paths:
+  downloads: "downloads"
+  output: "assets/frames/"
+
+youtube:
+  queries:
+    - "Your query"
+  num_videos: 5
+  resolution: 720
+
+video:
+  framerate: 180  # 60 seconds * 3 frames
+
+cvat:
+  task_name: "auto"
+  annotations_format: "YOLOv8 Detection 1.0"
+
+steps:
+  download_videos:
+    enabled: true
+  fix_video_format:
+    enabled: true
+  process_videos:
+    enabled: true
+  download_labels:
+    enabled: true
+  clear_empty_labels:
+    enabled: false
+  upload_labels:
+    enabled: true

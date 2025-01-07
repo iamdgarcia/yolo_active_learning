@@ -4,9 +4,51 @@ paths:
 
 youtube:
   queries:
-    - "Resumen la liga EA"
-  num_videos: 1
-  resolution: 480
+    - "Resumen La Liga EA"
+    - "Mejores momentos La Liga EA"
+    - "Goles La Liga EA"
+    - "Highlights La Liga EA"
+    - "Premier League highlights"
+    - "Resumen Premier League"
+    - "Mejores goles Premier League"
+    - "Premier League matchday recap"
+    - "Serie A highlights"
+    - "Resumen Serie A"
+    - "Mejores goles Serie A"
+    - "Giornata Serie A highlights"
+    - "Bundesliga highlights"
+    - "Resumen Bundesliga"
+    - "Mejores goles Bundesliga"
+    - "Bundesliga spieltag recap"
+    - "Ligue 1 highlights"
+    - "Resumen Ligue 1"
+    - "Mejores goles Ligue 1"
+    - "Ligue 1 journée recap"
+    - "Champions League highlights"
+    - "Resumen Champions League"
+    - "Mejores goles Champions League"
+    - "Champions League matchday recap"
+    - "Europa League highlights"
+    - "Resumen Europa League"
+    - "Mejores goles Europa League"
+    - "Europa League matchday recap"
+    - "MLS highlights"
+    - "Resumen MLS"
+    - "Mejores goles MLS"
+    - "MLS matchday recap"
+    - "Copa Libertadores highlights"
+    - "Resumen Copa Libertadores"
+    - "Mejores goles Copa Libertadores"
+    - "Libertadores partidos recap"
+    - "Eredivisie highlights"
+    - "J1 League highlights"
+    - "Super Lig highlights"
+    - "Saudi Pro League highlights"
+    - "Copa del Rey highlights"
+    - "FA Cup highlights"
+    - "Carabao Cup highlights"
+  num_videos: 5
+  resolution: 720
 
 video:
   framerate: 180  # 60 seconds * 3 frames

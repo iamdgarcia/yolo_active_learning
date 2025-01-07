@@ -1,6 +1,8 @@
 .env
+*env
 *__pycache__*
 downloads
 assets
 *.log
 *.json
+data/config.yaml
