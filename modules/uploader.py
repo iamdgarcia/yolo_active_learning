@@ -1,5 +1,6 @@
 from cvat_sdk import make_client
 import os
+from cvat_sdk.core.proxies.tasks import ResourceType, Task
 
 def upload_task(user, password, task_name, project_id, images_dir, annotations_path, annotations_format):
     with make_client(host="https://app.cvat.ai/", credentials=(user, password)) as client:
@@ -8,7 +9,7 @@ def upload_task(user, password, task_name, project_id, images_dir, annotations_p
 
         task = client.tasks.create_from_data(
             spec=task_spec,
-            resource_type="local",
+            resource_type=ResourceType.LOCAL,
             resources=resources,
             annotation_path=annotations_path,
             annotation_format=annotations_format,

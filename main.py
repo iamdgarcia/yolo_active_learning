@@ -41,13 +41,14 @@ def main():
     if config["steps"]["download_videos"]["enabled"]:
         try:
             logging.info("Step 1: Downloading YouTube Videos...")
-            search_and_download_videos(
-                query=config["youtube"]["queries"],
-                num_results=config["youtube"]["num_videos"],
-                resolution=config["youtube"]["resolution"],
-                download_path=config["paths"]["downloads"],
-            )
-            save_last_execution("download_videos", "success")
+            for q in config["youtube"]["queries"]:
+                search_and_download_videos(
+                    query=q,
+                    num_results=config["youtube"]["num_videos"],
+                    resolution=config["youtube"]["resolution"],
+                    download_path=config["paths"]["downloads"],
+                )
+                save_last_execution("download_videos", "success")
         except Exception as e:
             logging.error(f"Error in Step 1: {e}")
             save_last_execution("download_videos", "failure")
