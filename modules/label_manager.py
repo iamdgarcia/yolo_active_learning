@@ -24,8 +24,8 @@ def list_files(folder_path):
 
 def compare_and_remove(root_path):
     """Compare files in two folders and remove files from ROOT_PATH/images/train that are not in ROOT_PATH/labels/train."""
-    images_path = os.path.join(root_path, "images/Train")
-    labels_path = os.path.join(root_path, "labels/Train")
+    images_path = os.path.join(root_path, "images/train")
+    labels_path = os.path.join(root_path, "labels/train")
 
     # List files in both folders (ignoring extensions)
     files_in_images = list_files(images_path)

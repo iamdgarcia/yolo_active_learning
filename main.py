@@ -124,15 +124,15 @@ def main():
 
     # Step 6: Clean Labels
     if config["steps"]["clear_empty_labels"]["enabled"]:
-        try:
-            logging.info("Step 6: Cleaning Labels...")
-            compare_and_remove(root_path=output_path)
-            save_last_execution("clear_empty_labels", "success")
-        except Exception as e:
-            logging.error(f"Error in Step 6: {e}")
-            save_last_execution("clear_empty_labels", "failure")
-            traceback.print_exc()
-            return
+        for p in os.listdir(config['paths']['output']):
+
+            try:
+                logging.info("Step 6: Cleaning Labels... {p}")
+                compare_and_remove(root_path=os.path.join(config['paths']['output'],p))
+            except Exception as e:
+                logging.error(f"Error in Step 6: {e}")
+
+        save_last_execution("clear_empty_labels", "success")
 
     logging.info("Pipeline completed successfully!")
 
