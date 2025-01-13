@@ -13,7 +13,7 @@ video:
 
 cvat:
   task_name: "auto"
-  annotations_format: "YOLOv8 Detection 1.0"
+  annotations_format: "Ultralytics YOLO Detection 1.0"
 
 steps:
   download_videos:
