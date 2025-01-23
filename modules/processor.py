@@ -100,7 +100,7 @@ def process_videos(videos_path, output_path, model_path, framerate=180):
                 # Save the current frame
                 frame_filename = os.path.join(output_path, f"images/train/frame_{date}{i}.jpg")
                 # Perform inference on the frame
-                results = model.predict(frame, verbose=False, save_txt=False, save=False, show_labels=False, show_conf=False, show_boxes=False)
+                results = model.predict(frame, verbose=False, save_txt=False, save=False, show_labels=False, show_conf=False, show_boxes=False,conf=0.2)
                 if len(results[0])==0:
                     continue
                 # Append the frame path to train.txt
